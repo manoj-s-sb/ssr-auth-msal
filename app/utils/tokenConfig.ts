@@ -9,9 +9,8 @@ export const getAccessToken = async ({ instance, account }: any) => {
   const accounts = instance.getAllAccounts();
   console.log(accounts, "accounts");
 
-  if (accounts.length <= 0) {
-    console.error("No accounts found. Redirecting to sign-in.");
-    throw new Error("No accounts found");
+  if (accounts.length === 0) {
+    console.log("No accounts found. Redirecting to sign-in.");
   }
 
   try {
@@ -36,18 +35,18 @@ export const getAccessToken = async ({ instance, account }: any) => {
       // Attempt to acquire token silently
       const response = await instance.acquireTokenSilent({
         scopes: [
-          "https://stancebeamcctest.onmicrosoft.com/2e2ab414-7175-411b-8a5d-d11b591cbd07/api.read",
+          "https://sbcenturycricketdev.onmicrosoft.com/ba6495f3-9f59-499a-b79d-cf23f388d378/tasks.read",
         ],
         account: activeAccount,
       });
-      console.log("fetched token");
+      console.log("fetched token",response.accessToken);  
       console.log("Access token response:", response);
 
-        // if (!response.accessToken) {
-        //   console.error("Access token is empty. Redirecting to login.");
-        //   instance.loginRedirect(signInRequest);
-        //   return;
-        // }
+      //   if (!response.accessToken) {
+      //     console.error("Access token is empty. Redirecting to login.");
+      //     instance.loginRedirect(signInRequest);
+      //     return;
+      //   }
 
       localStorage.setItem("accessToken", response.accessToken);
       localStorage.setItem(
@@ -62,7 +61,7 @@ export const getAccessToken = async ({ instance, account }: any) => {
           "Silent token acquisition failed, redirecting to login.",
           error
         );
-      //  instance.loginRedirect(signInRequest);
+        instance.loginRedirect(signInRequest);
       } else {
         console.error("Unexpected error during token acquisition:", error);
         throw error;
