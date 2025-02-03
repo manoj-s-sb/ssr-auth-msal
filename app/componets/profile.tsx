@@ -7,6 +7,7 @@ import { getAccessToken } from "../utils/tokenConfig";
 const Profile = () => {
   const { instance, accounts } = useMsal();
   const [accessToken, setAccessToken] = useState(null);
+  console.log(typeof window !== "undefined" ? "CSR" : "SSR");
 
   const handleProfileEdit = async () => {
     await instance
@@ -64,7 +65,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center h-screen bg-white">
+      <div className="flex items-center justify-center h-[200px] bg-white">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4 text-black">
             Profile Management

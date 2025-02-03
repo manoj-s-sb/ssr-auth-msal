@@ -6,8 +6,7 @@ import { signInRequest } from "./authConfig";
 
 export const getAccessToken = async ({ instance, account }: any) => {
   console.log("Trying to fetch all accounts");
-  const accounts = instance.getAllAccounts();
-  console.log(accounts, "accounts");
+  const accounts = instance.getAllAccounts(); 
 
   if (accounts.length === 0) {
     console.log("No accounts found. Redirecting to sign-in.");
@@ -16,8 +15,7 @@ export const getAccessToken = async ({ instance, account }: any) => {
   try {
     // Handle redirect promise (if returning from a redirect)
     const authResponse = await instance.handleRedirectPromise();
-    if (authResponse) {
-      console.log("Auth response from redirect:", authResponse);
+    if (authResponse) { 
       instance.setActiveAccount(authResponse.account);
     }
 
@@ -40,7 +38,6 @@ export const getAccessToken = async ({ instance, account }: any) => {
         account: activeAccount,
       });
       console.log("fetched token",response.accessToken);  
-      console.log("Access token response:", response);
 
       //   if (!response.accessToken) {
       //     console.error("Access token is empty. Redirecting to login.");

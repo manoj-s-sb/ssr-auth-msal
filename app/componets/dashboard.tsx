@@ -3,6 +3,7 @@ import { signInRequest, signUpRequest } from "../utils/authConfig";
 
 const Dashboard = () => {
   const { instance } = useMsal();
+  console.log(typeof window !== "undefined" ? "CSR" : "SSR");
 
   const handleSignIn = async () => {
     await instance
