@@ -19,7 +19,7 @@ const Users = () => {
           await msalInstance.initialize();
 
           // ✅ Fetch the access token
-          const token = await getAccessToken({ instance: msalInstance });
+          const token = await getAccessToken( msalInstance );
 
           if (token) {
             console.log("Access from user ======>", token);
