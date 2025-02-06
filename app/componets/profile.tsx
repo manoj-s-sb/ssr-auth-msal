@@ -8,7 +8,9 @@ import { getAccessToken } from "../utils/tokenConfig";
 const Profile = () => {
   const { instance, accounts } = useMsal();
   const [, setAccessToken] = useState<string | undefined>("");
-  const [loading, setLoading] = useState<{ action: "edit" | "reset" | "logout" | null }>({ action: null });
+  const [loading, setLoading] = useState<{
+    action: "edit" | "reset" | "logout" | null;
+  }>({ action: null });
 
   console.log(typeof window !== "undefined" ? "CSR" : "SSR");
 
@@ -28,7 +30,7 @@ const Profile = () => {
     instance.clearCache();
   };
 
-  console.log(loading,'loading')
+  console.log(loading, "loading");
 
   useEffect(() => {
     if (accounts?.length > 0) {
@@ -50,12 +52,6 @@ const Profile = () => {
 
   return (
     <>
-
-
-
-
-
-
       <div className="flex items-center justify-center h-full bg-white">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4 text-black">
