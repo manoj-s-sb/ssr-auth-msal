@@ -1,6 +1,5 @@
 import {
   InteractionRequiredAuthError,
-  PublicClientApplication,
 } from "@azure/msal-browser";
 import { signInRequest } from "./authConfig";
 

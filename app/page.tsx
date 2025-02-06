@@ -1,4 +1,4 @@
-import MyComponent from "./componets/dummy";
+// import MyComponent from "./componets/dummy";
 import MsalWrapper from "./landing/msalWrapper";
 
 export default function Home() {

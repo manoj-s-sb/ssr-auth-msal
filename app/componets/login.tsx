@@ -5,7 +5,7 @@ import Dashboard from "../componets/dashboard";
 const Login = () => {
   const { accounts } = useMsal();
 
-  const isClient = typeof window !== "undefined";
+  // const isClient = typeof window !== "undefined";
 
   return (
     <div className="bg-white text-black p-5 h-screen flex flex-col items-center justify-center">
