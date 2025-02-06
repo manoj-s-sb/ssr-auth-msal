@@ -5,8 +5,7 @@ export const msalConfig = {
     clientId: "2c14f19d-bd70-4cad-bab5-968f0351842f", // Replace with your Azure AD B2C Client ID
     authority: "https://sbcenturycricketdev.b2clogin.com/sbcenturycricketdev.onmicrosoft.com/B2C_1_SignIn", // Default authority for sign-in
     knownAuthorities: ["sbcenturycricketdev.b2clogin.com"], // Replace with your tenant name
-    redirectUri: "http://localhost:3000", // Replace with your redirect URI
-    postLogoutRedirectUri: "http://localhost:3000", // Replace with your post logout redirect URI
+    redirectUri: "https://ssr-auth-msal.vercel.app/", // Replace with your redirect URI
 
     // clientId: "d710cec4-128a-47c2-8cbe-7c37852eccaa",
     // authority:
@@ -96,7 +95,7 @@ initializeMsal();
 //     authority:
 //       "https://stancebeamcctest.b2clogin.com/stancebeamcctest.onmicrosoft.com/B2C_1_SIgnUp",
 //     knownAuthorities: ["stancebeamcctest.b2clogin.com"],
-//     redirectUri: "http://localhost:3000/dashboard",
+//     redirectUri: "http://localhost:3000/",
 //   },
 //   cache: {
 //     cacheLocation: "sessionStorage", // This configures where your cache will be stored

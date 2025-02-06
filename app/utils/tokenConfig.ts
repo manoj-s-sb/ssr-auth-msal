@@ -15,6 +15,7 @@ export const getAccessToken = async ( instance:IPublicClientApplication ) => {
   try {
     // Handle redirect promise (if returning from a redirect)
     const authResponse = await instance.handleRedirectPromise();
+    console.log(authResponse,'red')
     if (authResponse) { 
       instance.setActiveAccount(authResponse.account);
     }
@@ -22,6 +23,7 @@ export const getAccessToken = async ( instance:IPublicClientApplication ) => {
     // Get the active account or fallback to the first account
     const activeAccount = instance.getActiveAccount() || accounts[0];
     console.log("Active account:", activeAccount);
+    console.log("accounts[0]", accounts[0]);
 
     if (!activeAccount) {
       console.error("No active account. Redirecting to sign-in.");
@@ -58,7 +60,7 @@ export const getAccessToken = async ( instance:IPublicClientApplication ) => {
           "Silent token acquisition failed, redirecting to login.",
           error
         );
-        instance.loginRedirect(signInRequest);
+        // instance.loginRedirect(signInRequest);
       } else {
         console.error("Unexpected error during token acquisition:", error);
         throw error;
