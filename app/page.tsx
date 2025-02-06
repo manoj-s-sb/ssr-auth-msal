@@ -1,16 +1,11 @@
-"use client";
+import MyComponent from "./componets/dummy";
+import MsalWrapper from "./landing/msalWrapper";
 
-import { MsalProvider, useMsal } from "@azure/msal-react";
-import { msalConfig } from "./utils/authConfig";
-import { PublicClientApplication } from "@azure/msal-browser"; 
-import LandingPage from "./landing/page"; 
- 
-export default function Home() { 
+export default function Home() {
   return (
-    <MsalProvider instance={new PublicClientApplication(msalConfig)}>
-      <LandingPage /> 
-      
-      
-    </MsalProvider>
+    <>
+      <MsalWrapper />    {/* Client Side Rendering */}
+      <MyComponent />   {/* Server Side Rendering */}
+    </>
   );
 }

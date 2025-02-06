@@ -28,7 +28,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-white">
+    <div className="flex items-center justify-center h-[400px] bg-white">
       <div className="text-center">
         <h1 className="text-2xl font-bold mb-4 text-black">Hi Please signin if u have account</h1>
         <button className="auth-button signin-button bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={handleSignIn}>
@@ -40,7 +40,7 @@ const Dashboard = () => {
         </button>
       </div>
     </div>
-  );
+  )
 };
 
 export default Dashboard;

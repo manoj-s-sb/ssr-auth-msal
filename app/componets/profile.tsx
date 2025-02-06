@@ -1,3 +1,4 @@
+"use client"
 import { useMsal } from "@azure/msal-react";
 import { profileEditRequest, passwordResetRequest } from "../utils/authConfig";
 import { useEffect, useState } from "react";

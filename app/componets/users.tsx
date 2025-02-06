@@ -1,3 +1,4 @@
+"use client"
 import { useMsal } from "@azure/msal-react";
 import { useEffect } from "react";
 import { msalInstance } from "../utils/authConfig";
@@ -6,6 +7,7 @@ import { getAccessToken } from "../utils/tokenConfig";
 const Users = () => {
   const { accounts } = useMsal();
   console.log(typeof window !== "undefined" ? "user CSR" : "user SSR");
+  console.log(typeof window)
 
   useEffect(() => {
     if (accounts?.length > 0) {
@@ -33,7 +35,7 @@ const Users = () => {
   }, [accounts]); // Runs only once when the component mounts
 
   return (
-    <div className="bg-gray-100 min-h-screen p-5">
+    <div className="bg-gray-100 min-h-[400px] p-5">
       <h1 className="text-2xl font-bold mb-4 text-black">User List</h1>
       <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
         <thead>
