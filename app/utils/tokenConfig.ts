@@ -3,7 +3,7 @@ import {
 } from "@azure/msal-browser";
 import { signInRequest } from "./authConfig";
 
-export const getAccessToken = async ({ instance, account }: any) => {
+export const getAccessToken = async ({ instance }: any) => {
   console.log("Trying to fetch all accounts");
   const accounts = instance.getAllAccounts(); 
 

@@ -7,7 +7,7 @@ import { getAccessToken } from "../utils/tokenConfig";
 
 const Profile = () => {
   const { instance, accounts } = useMsal();
-  const [accessToken, setAccessToken] = useState(null);
+  const [, setAccessToken] = useState(null);
   console.log(typeof window !== "undefined" ? "CSR" : "SSR");
 
   const handleProfileEdit = async () => {
