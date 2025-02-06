@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useMsal } from "@azure/msal-react";
 import { profileEditRequest, passwordResetRequest } from "../utils/authConfig";
 import { useEffect, useState } from "react";
@@ -8,49 +8,35 @@ import { getAccessToken } from "../utils/tokenConfig";
 const Profile = () => {
   const { instance, accounts } = useMsal();
   const [, setAccessToken] = useState<string | undefined>("");
+  const [loading, setLoading] = useState<{ action: "edit" | "reset" | "logout" | null }>({ action: null });
+
   console.log(typeof window !== "undefined" ? "CSR" : "SSR");
 
   const handleProfileEdit = async () => {
-    await instance
-      .loginRedirect(profileEditRequest)
-      .then(() => {
-        console.log("Profile Detail Fetched Succesfully");
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+    setLoading({ action: "edit" });
+    await instance.loginRedirect(profileEditRequest);
   };
 
   const handleResetPassword = async () => {
-    await instance
-      .loginRedirect(passwordResetRequest)
-      .then(() => {
-        console.log("Clicked Password Reset");
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+    setLoading({ action: "reset" });
+    await instance.loginRedirect(passwordResetRequest);
   };
 
   const handleLogout = async () => {
-    await instance.logoutRedirect().catch((e) => {
-      console.error(e);
-    });
+    setLoading({ action: "logout" });
+    await instance.loginRedirect();
     instance.clearCache();
   };
+
+  console.log(loading,'loading')
 
   useEffect(() => {
     if (accounts?.length > 0) {
       const fetchToken = async () => {
         try {
           console.log("Fetching access token...");
-
-          // ✅ Ensure MSAL is initialized
           await msalInstance.initialize();
-
-          // ✅ Fetch the access token
-          const token = await getAccessToken( msalInstance );
-
+          const token = await getAccessToken(msalInstance);
           if (token) {
             setAccessToken(token);
           }
@@ -58,11 +44,9 @@ const Profile = () => {
           console.error("Error fetching access token:", err);
         }
       };
-      setTimeout(() => {
-        fetchToken();
-      }, 1000);
+      setTimeout(fetchToken, 1000);
     }
-  }, [accounts]); // Runs only once when the component mounts
+  }, [accounts]);
 
   return (
     <>
@@ -71,31 +55,32 @@ const Profile = () => {
           <h1 className="text-2xl font-bold mb-4 text-black">
             Profile Management
           </h1>
-          <h1 className="mb-4 ext-2xl font-bold mb-4 text-black">
+          <h1 className="mb-4 text-2xl font-bold text-black">
             Hi, {accounts?.[0]?.name} - Email: {accounts?.[0]?.username}
           </h1>
           <button
             className="auth-button edit-button bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
             onClick={handleProfileEdit}
+            disabled={loading.action !== null}
           >
-            Edit Profile
+            {loading.action === "edit" ? "Editing..." : "Edit Profile"}
           </button>
           <button
             className="auth-button reset-button bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 ml-4"
             onClick={handleResetPassword}
+            disabled={loading.action !== null}
           >
-            Reset Password
+            {loading.action === "reset" ? "Resetting..." : "Reset Password"}
           </button>
           <button
             className="auth-button logout-button bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-4"
             onClick={handleLogout}
+            disabled={loading.action !== null}
           >
-            Logout
+            {loading.action === "logout" ? "Logging out..." : "Logout"}
           </button>
         </div>
-      </div>  
-      
-       
+      </div>
     </>
   );
 };

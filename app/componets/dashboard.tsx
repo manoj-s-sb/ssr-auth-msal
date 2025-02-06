@@ -8,13 +8,16 @@ const Dashboard = (): ReactElement => {
   const [loadingSignUp, setLoadingSignUp] = useState(false);
 
   const handleSignIn = async () => {
+    console.log('handle')
     setLoadingSignIn(true);
     try {
-      await instance.loginRedirect(signInRequest);
+      // Initiate loginPopup and wait for it to complete
+      await instance.loginPopup(signInRequest);
       console.log("Logged In Successfully");
     } catch (e) {
       console.error(e);
     } finally {
+      // Ensure loading state is always reset after the operation
       setLoadingSignIn(false);
     }
   };
@@ -22,7 +25,7 @@ const Dashboard = (): ReactElement => {
   const handleSignUp = async () => {
     setLoadingSignUp(true);
     try {
-      await instance.loginRedirect(signUpRequest);
+      await instance.loginPopup(signUpRequest);
       console.log("Successfully Signed Up");
     } catch (e) {
       console.error(e);
