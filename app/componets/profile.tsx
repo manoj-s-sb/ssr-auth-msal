@@ -66,7 +66,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center h-[200px] bg-white">
+      <div className="flex items-center justify-center h-full bg-white">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4 text-black">
             Profile Management

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <MsalWrapper />    {/* Client Side Rendering */}
-      <MyComponent />   {/* Server Side Rendering */}
+      {/* <MyComponent />   Server Side Rendering */}
     </>
   );
 }

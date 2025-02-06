@@ -28,7 +28,7 @@ const Dashboard = (): ReactElement => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[600px] w-[800px]">
+    <div className="flex items-center justify-center h-full w-[800px]">
       <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
         <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
           Welcome to Century Cricket App
