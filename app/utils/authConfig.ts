@@ -1,4 +1,4 @@
-import { PublicClientApplication } from "@azure/msal-browser";
+import { IPublicClientApplication, PublicClientApplication } from "@azure/msal-browser";
 
 export const msalConfig = {
   auth: {
@@ -67,7 +67,7 @@ export const profileEditRequest = {
    "https://sbcenturycricketdev.b2clogin.com/sbcenturycricketdev.onmicrosoft.com/B2C_1_Profile_Edit", // Replace with your profile edit policy
 };
 
-export const msalInstance = new PublicClientApplication(msalConfig);
+export const msalInstance:IPublicClientApplication = new PublicClientApplication(msalConfig);
 
 // ✅ Ensure MSAL is initialized before using it
 const initializeMsal = async () => {

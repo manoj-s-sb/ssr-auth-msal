@@ -7,7 +7,7 @@ import { getAccessToken } from "../utils/tokenConfig";
 
 const Profile = () => {
   const { instance, accounts } = useMsal();
-  const [, setAccessToken] = useState(null);
+  const [, setAccessToken] = useState<any>(null);
   console.log(typeof window !== "undefined" ? "CSR" : "SSR");
 
   const handleProfileEdit = async () => {
@@ -49,7 +49,7 @@ const Profile = () => {
           await msalInstance.initialize();
 
           // ✅ Fetch the access token
-          const token = await getAccessToken({ instance: msalInstance });
+          const token = await getAccessToken( msalInstance );
 
           if (token) {
             setAccessToken(token);

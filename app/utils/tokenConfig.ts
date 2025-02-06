@@ -1,9 +1,10 @@
 import {
   InteractionRequiredAuthError,
+  IPublicClientApplication,
 } from "@azure/msal-browser";
 import { signInRequest } from "./authConfig";
 
-export const getAccessToken = async ({ instance }: any) => {
+export const getAccessToken = async ( instance:IPublicClientApplication ) => {
   console.log("Trying to fetch all accounts");
   const accounts = instance.getAllAccounts(); 
 
